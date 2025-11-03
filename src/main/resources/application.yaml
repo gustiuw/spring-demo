@@ -1,8 +1,6 @@
 spring:
   application:
-    name: demo
-  profiles:
-    active: dev
+    name: spring-restapi
   config:
     activate:
       on-profile: dev
