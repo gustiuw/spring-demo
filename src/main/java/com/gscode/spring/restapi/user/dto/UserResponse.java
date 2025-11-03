@@ -7,5 +7,9 @@ public record UserResponse(
         String name,
         String email,
         Instant createdAt,
-        Instant updatedAt
+        Instant updatedAt,
+        boolean isDeleted,
+        Instant deletedAt,
+        String username,
+        String password
 ) {}

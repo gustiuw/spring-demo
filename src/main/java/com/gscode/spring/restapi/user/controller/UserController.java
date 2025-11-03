@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import com.gscode.spring.restapi.user.service.UserService;
+import com.gscode.spring.restapi.user.dto.UserPatchRequest;
 
 @Tag(name = "Users", description = "User CRUD endpoints")
 @RestController
@@ -46,5 +47,17 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         service.delete(id);
+    }
+
+    @Operation(summary = "Restore user")
+    @PutMapping("/{id}/restore")
+    public void restore(@PathVariable Long id) {
+        service.restore(id);
+    }
+
+    @Operation(summary = "Patch user")
+    @PatchMapping("/{id}")
+    public UserResponse patch(@PathVariable Long id, @Valid @RequestBody UserPatchRequest req) {
+        return service.patch(id, req);
     }
 }
